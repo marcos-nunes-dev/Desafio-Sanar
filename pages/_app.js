@@ -7,7 +7,7 @@ import withReduxStore from '../libs/with-redux-store';
 
 class MyApp extends App {
   render() {
-    const { Component, pageProps, reduxStore, apolloClient } = this.props
+    const { Component, pageProps, reduxStore, apolloClient } = this.props;
     return (
       <Container>
         <ApolloProvider client={apolloClient}>
@@ -16,8 +16,8 @@ class MyApp extends App {
           </Provider>
         </ApolloProvider>
       </Container>
-    )
+    );
   }
 }
 
-export default withApolloClient(withReduxStore(MyApp))
+export default withApolloClient(withReduxStore(MyApp));

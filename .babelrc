@@ -6,6 +6,14 @@
       {
         "ssr": true
       }
+    ],
+    "inline-react-svg",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "css"
+      }
     ]
   ]
 }

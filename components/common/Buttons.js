@@ -16,10 +16,31 @@ const RedDefaultButton = styled.div`
   }
 `;
 
+const WhiteBorderedButton = styled.div`
+  background: transparent;
+  padding: ${props => (props.block ? '10px 40px' : '10px 20px')};
+  width: ${props => (props.block ? '100%' : 'initial')};
+  border: 1px solid #fff;
+  font-size: 13px;
+  border-radius: 100px;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 export function ButtonRed(props) {
   return (
     <RedDefaultButton block={props.block}>
       {props.text ? props.text : 'props.text'}
     </RedDefaultButton>
+  )
+}
+
+export function ButtonWhiteBordered(props) {
+  return (
+    <WhiteBorderedButton block={props.block}>
+      {props.text ? props.text : 'props.text'}
+    </WhiteBorderedButton>
   )
 }

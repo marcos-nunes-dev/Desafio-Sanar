@@ -10,9 +10,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "antd": "^3.9.2",
     "apollo-boost": "^0.3.1",
     "graphql": "^14.2.1",
     "isomorphic-unfetch": "^3.0.0",
+    "lodash": "^4.17.11",
     "next": "^8.0.4",
     "react": "^16.8.6",
     "react-apollo": "^2.5.4",
@@ -26,6 +29,7 @@
   },
   "devDependencies": {
     "babel-loader": "^8.0.5",
+    "babel-plugin-import": "^1.9.1",
     "babel-plugin-inline-react-svg": "^1.0.1",
     "babel-plugin-styled-components": "latest"
   }

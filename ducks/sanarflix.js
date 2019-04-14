@@ -1,25 +1,58 @@
 // Actions
-const UPDATE_SELECTED_ROADMAP = 'GROW/GROWBOARD/UPDATE_SELECTED_ROADMAP';
+const UPDATE_CURSES_LIST = 'SANAR/SANARFLIX/UPDATE_CURSES_LIST';
+const UPDATE_TEACHERS_LIST = 'SANAR/SANARFLIX/UPDATE_TEACHERS_LIST';
+const UPDATE_MODULE_LIST = 'SANAR/SANARFLIX/UPDATE_MODULE_LIST';
+const UPDATE_MODAL_LOGIN_STATE = 'SANAR/SANARFLIX/UPDATE_MODAL_LOGIN_STATE';
 
 // Initial state
 export const INITIAL_STATE = {
-  selectedRoadmap: '',
+  cursesList: [],
+  teachersList: [],
+  moduleList: [],
+  loginModalState: false,
 }
 
 // Reducer
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case UPDATE_SELECTED_ROADMAP:      
+    case UPDATE_CURSES_LIST:
       return {
         ...state,
-        selectedRoadmap: 1,
+        cursesList: action.list,
       };
+    case UPDATE_TEACHERS_LIST:
+      return {
+        ...state,
+        teachersList: action.list,
+      };
+    case UPDATE_MODULE_LIST:
+      return {
+        ...state,
+        moduleList: action.list,
+      };
+    case UPDATE_MODAL_LOGIN_STATE:
+      return {
+        ...state,
+        loginModalState: !state.loginModalState
+      }
     default:
       return state;
   }
 }
 
 // Action Creators
-export function updateSelectedRoadmap(roadmap) {
-  return { type: UPDATE_SELECTED_ROADMAP, roadmap };
+export function updateCursesList(list) {
+  return { type: UPDATE_CURSES_LIST, list };
+}
+
+export function updateTeachersList(list) {
+  return { type: UPDATE_TEACHERS_LIST, list };
+}
+
+export function updateModulesList(list) {
+  return { type: UPDATE_MODULE_LIST, list };
+}
+
+export function updateLoginModalState(value) {
+  return { type: UPDATE_MODAL_LOGIN_STATE, value };
 }
