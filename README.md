@@ -3,7 +3,6 @@ Desafio-Sanar
 # Build
 Instale as dependências - `yarn`
 Ambiente de dev `yarn dev`
-Build boneless `yarn export`
 
 ## Apollo + GraphQL
 As dependências foram instaladas com o intuito de se construir uma camada
