@@ -17,9 +17,9 @@ A API estava sem permissão para uso de imagens por isso não consegui exibir.
 Módulo de Auth se encontra em lib porem somente como "estudo" o login foi feito 
 de forma simulada.
 
-## Async Store
-O ideal para a store seria utilizar um middleware como o redux-thunk para trabalhar com os
-fetchs de forma async na store mas não deu tempo.
+## Async Store - (FEITO)
+``O ideal para a store seria utilizar um middleware como o redux-thunk para trabalhar com os
+fetchs de forma async na store mas não deu tempo.``
 
 ## Commits
 Os Commits estão muuito desorganizados, tenho total conhecimento do fato. No dia a dia não tenho a prática de manter
