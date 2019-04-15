@@ -6,7 +6,7 @@ import MainWrapper from '../components/common/MainWrapper';
 import Menu from '../components/common/Menu';
 import ContentPage from '../components/CurseScene/ContentPage';
 import Header from '../components/CurseScene/Header';
-import { fetchModulesDetails, updateModulesList } from '../ducks/sanarflix';
+import { fetchModulesDetails } from '../ducks/sanarflix';
 
 class curso extends Component {
   componentDidMount() {
@@ -32,8 +32,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  updateModulesList,
-  fetchModulesDetails,
+  fetchModulesDetails
 };
 
 export default connect(

@@ -7,7 +7,7 @@ import MeetTeachers from '../components/AboutScene/MeetTeachers';
 import Footer from '../components/common/Footer';
 import MainWrapper from '../components/common/MainWrapper';
 import Menu from '../components/common/Menu';
-import { fetchTeachersDetails, updateTeachersList } from '../ducks/sanarflix';
+import { fetchTeachersDetails } from '../ducks/sanarflix';
 
 class sobre extends Component {
   componentDidMount() {
@@ -34,8 +34,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  updateTeachersList,
-  fetchTeachersDetails,
+  fetchTeachersDetails
 };
 
 export default connect(

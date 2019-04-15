@@ -6,16 +6,9 @@ import MainWrapper from '../components/common/MainWrapper';
 import Menu from '../components/common/Menu';
 import Header from '../components/HomeScene/Header';
 import SlidersFeed from '../components/HomeScene/SlidersFeed';
-import { fetchCursesDetails, updateCursesList } from '../ducks/sanarflix';
+import { fetchCursesDetails } from '../ducks/sanarflix';
 
 class index extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      res: [],
-    };
-  }
-
   componentDidMount() {
     this.props.fetchCursesDetails();
   }
@@ -39,7 +32,6 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  updateCursesList,
   fetchCursesDetails,
 };
 

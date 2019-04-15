@@ -28,4 +28,4 @@ os commits tão grandes e desorganizados, peço perdão.
 ## Considerações
 Devido ao meu tempo limitado não pude desenvolver o layout como eu gostaria acrescentando
 animações, responsividade, shared element e etc. Talvez até mesmo criar um novo layout,
-porem desenvolvi o máximo que pude nesse tempo de 1 dia.
+porem desenvolvi o máximo que pude nesse tempo de 1 dia. 
