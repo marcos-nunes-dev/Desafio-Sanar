@@ -1,10 +1,11 @@
+import axios from 'axios';
+
 // Actions
 const UPDATE_CURSES_LIST = 'SANAR/SANARFLIX/UPDATE_CURSES_LIST';
 const UPDATE_TEACHERS_LIST = 'SANAR/SANARFLIX/UPDATE_TEACHERS_LIST';
 const UPDATE_MODULE_LIST = 'SANAR/SANARFLIX/UPDATE_MODULE_LIST';
 const UPDATE_MODAL_LOGIN_STATE = 'SANAR/SANARFLIX/UPDATE_MODAL_LOGIN_STATE';
 const UPDATE_LOGIN_STATE = 'SANAR/SANARFLIX/UPDATE_LOGIN_STATE';
-
 
 // Initial state
 export const INITIAL_STATE = {
@@ -67,4 +68,34 @@ export function updateLoginModalState() {
 
 export function updateLoginState() {
   return { type: UPDATE_LOGIN_STATE };
+}
+
+export function fetchCursesDetails() {
+  return function(dispatch) {
+    return axios
+      .get('https://5b7570f8deca780014ec9f86.mockapi.io/v1/cursos')
+      .then(({ data }) => {
+        dispatch(updateCursesList(data));
+      });
+  };
+}
+
+export function fetchTeachersDetails() {
+  return function(dispatch) {
+    return axios
+      .get('https://5b7570f8deca780014ec9f86.mockapi.io/v1/professores')
+      .then(({ data }) => {
+        dispatch(updateTeachersList(data));
+      });
+  };
+}
+
+export function fetchModulesDetails() {
+  return function(dispatch) {
+    return axios
+      .get('https://5b7570f8deca780014ec9f86.mockapi.io/v1/modulos')
+      .then(({ data }) => {
+        dispatch(updateModulesList(data));
+      });
+  };
 }

@@ -1,12 +1,12 @@
+import 'isomorphic-unfetch';
 import React, { Component } from 'react';
-import Menu from '../components/common/Menu';
-import MainWrapper from '../components/common/MainWrapper';
+import { connect } from 'react-redux';
 import Footer from '../components/common/Footer';
+import MainWrapper from '../components/common/MainWrapper';
+import Menu from '../components/common/Menu';
 import Header from '../components/HomeScene/Header';
 import SlidersFeed from '../components/HomeScene/SlidersFeed';
-import 'isomorphic-unfetch';
-import { connect } from 'react-redux';
-import { updateCursesList } from '../ducks/sanarflix';
+import { fetchCursesDetails, updateCursesList } from '../ducks/sanarflix';
 
 class index extends Component {
   constructor(props) {
@@ -16,28 +16,8 @@ class index extends Component {
     };
   }
 
-  fetchCursesData = () => {
-    !this.props.cursesList
-      ? fetch('https://5b7570f8deca780014ec9f86.mockapi.io/v1/cursos')
-        .then(response => response.json())
-        .then(data =>
-          this.setState({ res: data }, () =>
-            this.props.updateCursesList(this.state.res)
-          )
-        )
-      : fetch('https://5b7570f8deca780014ec9f86.mockapi.io/v1/cursos')
-        .then(response => response.json())
-        .then(
-          data =>
-            data !== this.props.cursesList &&
-            this.setState({ res: data }, () =>
-              this.props.updateCursesList(this.state.res)
-            )
-        );
-  };
-
-  componentWillMount() {
-    this.fetchCursesData();
+  componentDidMount() {
+    this.props.fetchCursesDetails();
   }
 
   render() {
@@ -60,6 +40,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   updateCursesList,
+  fetchCursesDetails,
 };
 
 export default connect(

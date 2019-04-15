@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import CheckIcon from '../../static/icons/checked.svg';
-import VideosIcon from '../../static/icons/videos.svg';
-import PdfIcon from '../../static/icons/pdf.svg';
 import DocumentsIcon from '../../static/icons/documentos.svg';
+import PdfIcon from '../../static/icons/pdf.svg';
 import QuestionsIcons from '../../static/icons/questoes.svg';
+import VideosIcon from '../../static/icons/videos.svg';
 import { ButtonRed } from '../common/Buttons';
 
 const HeaderWrapper = styled.div`
-  height: 70vh;
+  height: 90vh;
   width: 100%;
   position: relative;
   background: #030619;
