@@ -21,6 +21,10 @@ de forma simulada.
 O ideal para a store seria utilizar um middleware como o redux-thunk para trabalhar com os
 fetchs de forma async na store mas não deu tempo.
 
+## Commits
+Os Commits estão muuito desorganizados, tenho total conhecimento do fato. No dia a dia não tenho a prática de manter
+os commits tão grandes e desorganizados, peço perdão.
+
 ## Considerações
 Devido ao meu tempo limitado não pude desenvolver o layout como eu gostaria acrescentando
 animações, responsividade, shared element e etc. Talvez até mesmo criar um novo layout,
