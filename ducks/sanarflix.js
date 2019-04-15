@@ -3,6 +3,8 @@ const UPDATE_CURSES_LIST = 'SANAR/SANARFLIX/UPDATE_CURSES_LIST';
 const UPDATE_TEACHERS_LIST = 'SANAR/SANARFLIX/UPDATE_TEACHERS_LIST';
 const UPDATE_MODULE_LIST = 'SANAR/SANARFLIX/UPDATE_MODULE_LIST';
 const UPDATE_MODAL_LOGIN_STATE = 'SANAR/SANARFLIX/UPDATE_MODAL_LOGIN_STATE';
+const UPDATE_LOGIN_STATE = 'SANAR/SANARFLIX/UPDATE_LOGIN_STATE';
+
 
 // Initial state
 export const INITIAL_STATE = {
@@ -10,7 +12,8 @@ export const INITIAL_STATE = {
   teachersList: [],
   moduleList: [],
   loginModalState: false,
-}
+  userIsLoggedIn: false,
+};
 
 // Reducer
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -33,8 +36,13 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case UPDATE_MODAL_LOGIN_STATE:
       return {
         ...state,
-        loginModalState: !state.loginModalState
-      }
+        loginModalState: !state.loginModalState,
+      };
+    case UPDATE_LOGIN_STATE:
+      return {
+        ...state,
+        userIsLoggedIn: !state.userIsLoggedIn,
+      };
     default:
       return state;
   }
@@ -53,6 +61,10 @@ export function updateModulesList(list) {
   return { type: UPDATE_MODULE_LIST, list };
 }
 
-export function updateLoginModalState(value) {
-  return { type: UPDATE_MODAL_LOGIN_STATE, value };
+export function updateLoginModalState() {
+  return { type: UPDATE_MODAL_LOGIN_STATE };
+}
+
+export function updateLoginState() {
+  return { type: UPDATE_LOGIN_STATE };
 }

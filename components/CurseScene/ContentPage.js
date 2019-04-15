@@ -46,10 +46,20 @@ const BoxIconHolder = styled.div`
 
 const CollapseWrapper = styled.div`
   margin-top: 30px;
+  .ant-collapse-header {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+  }
 `;
 
 const InsidePanel = styled.div`
   padding: 15px;
+  ul {
+    list-style: none;
+  }
+  ul li {
+    font-size: 18px;
+  }
 `;
 
 export default class ContentPage extends Component {
@@ -58,33 +68,25 @@ export default class ContentPage extends Component {
       <ContentWrapper>
         <TextAboutWrapper>
           <h1>O que você vai aprender</h1>
-          <BoxInfo>
-            <BoxIconHolder>
-              <CheckIcon />
-            </BoxIconHolder>
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            </span>
-          </BoxInfo>
-          <BoxInfo>
-            <BoxIconHolder>
-              <CheckIcon />
-            </BoxIconHolder>
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </span>
-          </BoxInfo>
-          <BoxInfo>
-            <BoxIconHolder>
-              <CheckIcon />
-            </BoxIconHolder>
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </span>
-          </BoxInfo>
+          {this.props.data &&
+            this.props.data.map(
+              (item, index) =>
+                index === 0 && (
+                  <div key={index}>
+                    {item.conteudos &&
+                      item.conteudos.map((conteudo, key) => {
+                        return (
+                          <BoxInfo key={key}>
+                            <BoxIconHolder>
+                              <CheckIcon />
+                            </BoxIconHolder>
+                            <span>{conteudo.titulo}</span>
+                          </BoxInfo>
+                        );
+                      })}
+                  </div>
+                )
+            )}
         </TextAboutWrapper>
         <TextAboutWrapper>
           <h1>Conteúdo do Curso</h1>
@@ -98,8 +100,12 @@ export default class ContentPage extends Component {
                         <InsidePanel>
                           <ul>
                             {item.conteudos &&
-                              item.conteudos.map(conteudo => {
-                                <li>{conteudo.id}</li>;
+                              item.conteudos.map((conteudo, key) => {
+                                return (
+                                  <li key={key}>
+                                    {conteudo.titulo} ({conteudo.tipio})
+                                  </li>
+                                );
                               })}
                           </ul>
                         </InsidePanel>

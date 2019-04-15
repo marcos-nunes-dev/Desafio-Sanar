@@ -5,8 +5,22 @@ import { ButtonRed } from './Buttons';
 import Router from 'next/router';
 import { connect } from 'react-redux';
 import { Modal } from 'antd';
-import { updateLoginModalState } from '../../ducks/sanarflix';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { updateLoginModalState, updateLoginState } from '../../ducks/sanarflix';
+import LoginContent from '../common/LoginContent';
+import { notification } from 'antd';
+
+const openNotificationWithIcon = (type, title, desc) => {
+  notification[type]({
+    message: title,
+    description: desc,
+  });
+};
+
+notification.config({
+  placement: 'topRight',
+  top: 100,
+  duration: 5,
+});
 
 const MainWrapper = styled.div`
   display: flex;
@@ -57,10 +71,19 @@ const AcessButton = styled.div`
   color: #fff;
   font-weight: 400;
   font-size: 13px;
+  transition: all 1s ease;
 
   :hover {
     cursor: pointer;
   }
+`;
+
+const UserAvatar = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background: url('../../static/img/useravatar.jpg') no-repeat center center /
+    cover;
 `;
 
 const SearchBarHolder = styled.div`
@@ -87,7 +110,7 @@ class Menu extends Component {
           footer={null}
           visible={this.props.loginModalState}
         >
-          asd
+          <LoginContent />
         </Modal>
         <MainWrapper>
           <LogoWrapper>
@@ -95,23 +118,45 @@ class Menu extends Component {
           </LogoWrapper>
           <MenuWrapper>
             <span onClick={() => Router.push('/')}>Início</span>
-            <span onClick={() => Router.push('/sobre')}>Sobre o Sanarflix</span>
+            <span onClick={() => Router.push('/sobre')}>
+              Sobre o Sanarflix
+            </span>
             <span>Perguntas frequentes</span>
+            <span onClick={() => Router.push('/curso')}>
+              Página de Curso
+            </span>
           </MenuWrapper>
           <ActionsMenu>
             <SearchBarHolder>
               <SearchBar />
             </SearchBarHolder>
-            <AcessButton>
-              <div
-                onClick={() => {
-                  this.props.updateLoginModalState();
-                }}
-              >
-                Entrar
-              </div>
-            </AcessButton>
-            <ButtonRed text="Assine" />
+            {this.props.userIsLoggedIn ? (
+              <AcessButton>
+                <div
+                  onClick={() => {
+                    this.props.updateLoginState(),
+                      openNotificationWithIcon('info', 'Usuário Deslogado', 'Seu usuário foi deslogado com sucesso!');
+                  }}
+                >
+                  Logout
+                </div>
+              </AcessButton>
+            ) : (
+              <AcessButton>
+                <div
+                  onClick={() => {
+                      this.props.updateLoginModalState();
+                  }}
+                >
+                  Entrar
+                </div>
+              </AcessButton>
+            )}
+            {this.props.userIsLoggedIn ? (
+              <UserAvatar />
+            ) : (
+              <ButtonRed text="Assine" />
+            )}
           </ActionsMenu>
         </MainWrapper>
       </>
@@ -122,11 +167,13 @@ class Menu extends Component {
 function mapStateToProps(state) {
   return {
     loginModalState: state.sanarflixReducer.loginModalState,
+    userIsLoggedIn: state.sanarflixReducer.userIsLoggedIn,
   };
 }
 
 const mapDispatchToProps = {
   updateLoginModalState,
+  updateLoginState,
 };
 
 export default connect(

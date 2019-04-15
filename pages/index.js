@@ -19,21 +19,21 @@ class index extends Component {
   fetchCursesData = () => {
     !this.props.cursesList
       ? fetch('https://5b7570f8deca780014ec9f86.mockapi.io/v1/cursos')
-          .then(response => response.json())
-          .then(data =>
+        .then(response => response.json())
+        .then(data =>
+          this.setState({ res: data }, () =>
+            this.props.updateCursesList(this.state.res)
+          )
+        )
+      : fetch('https://5b7570f8deca780014ec9f86.mockapi.io/v1/cursos')
+        .then(response => response.json())
+        .then(
+          data =>
+            data !== this.props.cursesList &&
             this.setState({ res: data }, () =>
               this.props.updateCursesList(this.state.res)
             )
-          )
-      : fetch('https://5b7570f8deca780014ec9f86.mockapi.io/v1/cursos')
-          .then(response => response.json())
-          .then(
-            data =>
-              data !== this.props.cursesList &&
-              this.setState({ res: data }, () =>
-                this.props.updateCursesList(this.state.res)
-              )
-          );
+        );
   };
 
   componentWillMount() {

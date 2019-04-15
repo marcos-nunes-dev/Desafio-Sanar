@@ -114,7 +114,6 @@ const NextButton = styled.div`
 export default class MeetTeachers extends Component {
   resolvedata = (item, index) => {
     return (
-      <div key={index}>
         <CarouselRow>
           <TeacherAvatar image={item.imagem} />
           <h1>{item.nome}</h1>
@@ -123,7 +122,6 @@ export default class MeetTeachers extends Component {
             <span>Formada pela USP</span>
           </p>
         </CarouselRow>
-      </div>
     );
   };
 
@@ -150,7 +148,7 @@ export default class MeetTeachers extends Component {
           >
             {this.props.data &&
               this.props.data.map((item, index) => (
-                <>{this.resolvedata(item, index)}</>
+                <div key={index}>{this.resolvedata(item, index)}</div>
               ))}
           </Carousel>
           <PrevButton onClick={() => this.RowScroll('Prev')}>

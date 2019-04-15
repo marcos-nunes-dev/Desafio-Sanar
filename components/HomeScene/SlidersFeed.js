@@ -155,11 +155,9 @@ const NextButton = styled.div`
 class SlidersFeed extends Component {
   resolveCursesList = (item, index) => {
     return (
-      <div key={index}>
-        <CarouselRow background={item.imagem}>
-          <span>{item.nome}</span>
-        </CarouselRow>
-      </div>
+      <CarouselRow background={item.imagem}>
+        <span>{item.nome}</span>
+      </CarouselRow>
     );
   };
 
@@ -175,7 +173,7 @@ class SlidersFeed extends Component {
           ? this.refs.seenRef.slick.slickNext()
           : this.refs.seenRef.slick.slickPrev();
         break;
-      case "news":
+      case 'news':
         action === 'Next'
           ? this.refs.newsRef.slick.slickNext()
           : this.refs.newsRef.slick.slickPrev();
@@ -199,7 +197,7 @@ class SlidersFeed extends Component {
             >
               {this.props.cursesList &&
                 this.props.cursesList.map((item, index) => (
-                  <>{this.resolveCursesList(item, index)}</>
+                  <div key={index}>{this.resolveCursesList(item, index)}</div>
                 ))}
             </Carousel>
             <PrevButton onClick={() => this.RowScroll('Prev', 'curses')}>
@@ -223,7 +221,7 @@ class SlidersFeed extends Component {
             >
               {this.props.cursesList &&
                 this.props.cursesList.map((item, index) => (
-                  <>{this.resolveCursesList(item, index)}</>
+                  <div key={index}>{this.resolveCursesList(item, index)}</div>
                 ))}
             </Carousel>
             <PrevButton onClick={() => this.RowScroll('Prev', 'seen')}>
@@ -247,7 +245,7 @@ class SlidersFeed extends Component {
             >
               {this.props.cursesList &&
                 this.props.cursesList.map((item, index) => (
-                  <>{this.resolveCursesList(item, index)}</>
+                  <div key={index}>{this.resolveCursesList(item, index)}</div>
                 ))}
             </Carousel>
             <PrevButton onClick={() => this.RowScroll('Prev', 'news')}>

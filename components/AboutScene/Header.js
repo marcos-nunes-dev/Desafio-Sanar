@@ -21,12 +21,12 @@ const HeaderWrapper = styled.div`
     bottom: 0;
     right: 0;
     position: absolute;
-    z-index: 1;
+    z-index: 0;
   }
 `;
 
 const HeaderInfo = styled.div`
-  z-index: 2;
+  z-index: 1;
   color: #fff;
   text-align: center;
   max-width: 65vw;
@@ -80,9 +80,9 @@ export default function Header() {
       <YoutubeEmbed>
         <iframe
           src="https://www.youtube.com/embed/AJ0P2joRyEk"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         />
       </YoutubeEmbed>
     </HeaderWrapper>

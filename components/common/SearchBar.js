@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import SearchIcon from '../../static/icons/search.svg';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+import Router from 'next/router';
 
 const SearchInput = styled.div`
   width: 100%;
@@ -49,13 +52,87 @@ const IconHolder = styled.div`
   }
 `;
 
-export default function SearchBar() {
-  return (
-    <SearchInput>
-      <IconHolder>
-        <SearchIcon />
-      </IconHolder>
-      <input type="text" placeholder="Busque seu curso..."/>
-    </SearchInput>
-  )
+const SearchPanelWrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  background: #161a31;
+  width: 100%;
+  transform: translateY(100%);
+`;
+
+const SearchPanelItem = styled.div`
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ffffff54;
+  p {
+    margin-bottom: 0px;
+    transition: all .3s;
+  }
+  span {
+    color: #ffffff54;
+  }
+  :hover{
+    cursor: pointer;
+  }
+  :hover p{
+    opacity: .5;
+  }
+`;
+
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchText: '',
+      result: []
+    };
+  }
+
+  SearchPanel = () => {
+    if (this.state.searchText.length > 3) {
+      return <SearchPanelWrapper>
+        {this.state.result.map(res => {
+          return (
+            <SearchPanelItem key={res.id} onClick={() => Router.push('/curso')}>
+              <p>{res.nome}</p>
+              <span>{res.area}</span>
+            </SearchPanelItem>
+          );
+        })}
+      </SearchPanelWrapper>;
+    }
+  };
+
+  handleChange = event => {
+    this.setState({ searchText: event.target.value });
+    this.setState({ result: _.filter(this.props.cursesList, (o) => { return _.includes(o.nome, this.state.searchText) }) })  
+  }
+
+  render() {
+    return (
+      <SearchInput>
+        <IconHolder>
+          <SearchIcon />
+        </IconHolder>
+        <input
+          type="text"
+          placeholder="Busque seu curso..."
+          onChange={this.handleChange}
+        />
+        {this.SearchPanel()}
+      </SearchInput>
+    );
+  }
 }
+
+function mapStateToProps(state) {
+  return {
+    cursesList: state.sanarflixReducer.cursesList,
+  };
+}
+
+export default connect(mapStateToProps)(SearchBar);

@@ -26,12 +26,12 @@ const HeaderWrapper = styled.div`
     bottom: 0;
     right: 0;
     position: absolute;
-    z-index: 1;
+    z-index: 0;
   }
 `;
 
 const HeaderInfo = styled.div`
-  z-index: 2;
+  z-index: 1;
   color: #fff;
   width: 100%;
   padding: 0 10%;
@@ -48,6 +48,7 @@ const TitleWrapper = styled.div`
     font-weight: 300;
     font-family: 'Fira Sans', sans-serif;
     margin-top: 15px;
+    line-height: 50px;
   }
   p {
     font-family: 'Fira Sans', sans-serif;
@@ -116,7 +117,7 @@ const MoreIconsItem = styled.div`
   flex-direction: column;
   font-size: 13px;
   font-weight: 300;
-  svg{
+  svg {
     width: 20px;
     height: 20px;
     fill: #fff;
@@ -130,7 +131,7 @@ export default function Header() {
       <HeaderInfo>
         <TitleWrapper>
           <p>SOBRE O CURSO</p>
-          <h1>Emergências Médicas Sanar</h1>
+          <h1>Raciocínio Clínico Baseado em Problemas</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -163,9 +164,9 @@ export default function Header() {
           <IframeWrapper>
             <iframe
               src="https://www.youtube.com/embed/AJ0P2joRyEk"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
             />
           </IframeWrapper>
           <PromotedInfo>
